@@ -1207,15 +1207,11 @@ function renderAdvancedLayout() {
   const thirdGrid = document.getElementById('thirdGrid');
   const qualityRow = document.getElementById('qualityRow');
   const profileRow = document.getElementById('profileRow');
-  const expRow = document.getElementById('expRow');
-  const seedRow = document.getElementById('seedRow');
   const qualityVisible = qualityRow.style.display !== 'none';
-  const expVisible = expRow.style.display !== 'none';
 
   defaultGrid.style.gridTemplateColumns = qualityVisible ? '1fr 1.9fr' : '1fr';
-  thirdGrid.style.gridTemplateColumns = expVisible ? '1fr 1fr' : '1fr';
+  thirdGrid.style.gridTemplateColumns = '1fr';
   profileRow.style.gridColumn = qualityVisible ? 'auto' : '1 / -1';
-  seedRow.style.gridColumn = expVisible ? 'auto' : '1 / -1';
 
   [defaultGrid, thirdGrid].forEach((grid) => {
     const hasVisibleRow = Array.from(grid.children).some((row) => row.style.display !== 'none');
