@@ -233,20 +233,20 @@ body {
 
 .settings-list {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .default-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: 1fr 1.9fr;
+  gap: 12px;
   order: 2;
 }
 
 .third-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
   order: 3;
 }
 
@@ -320,7 +320,7 @@ body {
 
 .advanced-toggle {
   order: 2;
-  padding: 12px;
+  padding: 14px 16px;
   border-radius: 10px;
   border: 0.5px solid rgba(255,255,255,0.08);
   background: rgba(255,255,255,0.03);
@@ -359,12 +359,12 @@ body {
 
 .advanced-content {
   order: 3;
-  padding: 12px;
+  padding: 16px;
   border-radius: 10px;
   border: 0.5px solid rgba(255,255,255,0.08);
   background: rgba(255,255,255,0.03);
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .advanced-content.hidden {
@@ -420,6 +420,13 @@ body {
   margin-top: 22px;
 }
 
+.style-switch-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 18px;
+}
+
 .slider-head {
   display: flex;
   align-items: center;
@@ -437,23 +444,29 @@ body {
 }
 
 .setting-row {
-  padding: 12px;
+  padding: 12px 14px;
   border-radius: 10px;
   border: 0.5px solid rgba(255,255,255,0.08);
   background: rgba(255,255,255,0.03);
-  min-height: 76px;
+  min-height: 80px;
 }
 
 .default-grid .setting-row {
   min-height: 0;
-  padding: 10px 12px;
-  min-height: 74px;
+  padding: 12px 14px;
+  min-height: 78px;
 }
 
 .third-grid .setting-row {
   min-height: 0;
-  padding: 10px 12px;
-  min-height: 74px;
+  padding: 12px 14px;
+  min-height: 78px;
+}
+
+.style-switch-grid .setting-row {
+  min-height: 0;
+  padding: 10px 14px;
+  min-height: 54px;
 }
 
 .default-grid .setting-top {
@@ -463,6 +476,11 @@ body {
 
 .third-grid .setting-top {
   min-height: 36px;
+  align-items: center;
+}
+
+.style-switch-grid .setting-top {
+  min-height: 30px;
   align-items: center;
 }
 
@@ -478,12 +496,23 @@ body {
   gap: 6px;
 }
 
+.style-switch-grid .setting-left,
+.style-switch-grid .setting-left.tight {
+  align-items: center;
+  gap: 6px;
+}
+
 .default-grid .setting-name {
   font-size: 12px;
   line-height: 1;
 }
 
 .third-grid .setting-name {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.style-switch-grid .setting-name {
   font-size: 12px;
   line-height: 1;
 }
@@ -500,6 +529,12 @@ body {
   font-size: 8px;
 }
 
+.style-switch-grid .info-icon {
+  width: 14px;
+  height: 14px;
+  font-size: 8px;
+}
+
 .default-grid .switch {
   transform: scale(0.92);
   transform-origin: center;
@@ -508,6 +543,23 @@ body {
 .third-grid .switch {
   transform: scale(0.92);
   transform-origin: center;
+}
+
+.style-switch-grid .switch {
+  width: 36px;
+  height: 16px;
+  border-radius: 999px;
+}
+
+.style-switch-grid .switch::after {
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+}
+
+.style-switch-grid .switch.on::after {
+  transform: translateX(20px);
 }
 
 .setting-row.hidden { display: none; }
@@ -575,6 +627,10 @@ body {
   height: 36px;
   padding: 0 28px 0 10px;
   font-size: 12px;
+}
+
+.profile-wide {
+  grid-column: span 1;
 }
 
 .third-grid .select,
@@ -689,6 +745,7 @@ input[type=range]::-moz-range-thumb {
   .generator { width: 100%; }
   .default-grid { grid-template-columns: 1fr; }
   .third-grid { grid-template-columns: 1fr; }
+  .style-switch-grid { grid-template-columns: 1fr; }
   .field-row { grid-template-columns: 1fr; }
 }
 </style>
@@ -879,6 +936,34 @@ input[type=range]::-moz-range-thumb {
             </div>
             <input type="range" id="chaosRange" min="0" max="100" value="5" step="1">
           </div>
+
+          <div class="style-switch-grid">
+            <div class="setting-row" id="rawRow">
+              <div class="setting-top">
+                <div class="setting-left tight">
+                  <div class="setting-name">原始</div>
+                  <div class="info-wrap">
+                    <div class="info-icon">?</div>
+                    <div class="info-tip">还原指令，高度遵循提示词。</div>
+                  </div>
+                  <div class="switch" id="rawSwitch" onclick="toggleRaw()"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-row" id="tileRow">
+              <div class="setting-top">
+                <div class="setting-left tight">
+                  <div class="setting-name">平铺</div>
+                  <div class="info-wrap">
+                    <div class="info-icon">?</div>
+                    <div class="info-tip">生成可无缝重复排列的图像，适合创建重复图案和纹理。</div>
+                  </div>
+                  <div class="switch" id="tileSwitch" onclick="toggleTile()"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="advanced-toggle" id="advancedToggle" onclick="toggleAdvanced()">
@@ -908,35 +993,7 @@ input[type=range]::-moz-range-thumb {
               </div>
             </div>
 
-            <div class="setting-row" id="rawRow">
-              <div class="setting-top">
-                <div class="setting-left tight">
-                  <div class="setting-name">原始</div>
-                  <div class="info-wrap">
-                    <div class="info-icon">?</div>
-                    <div class="info-tip">还原指令，高度遵循提示词。</div>
-                  </div>
-                  <div class="switch" id="rawSwitch" onclick="toggleRaw()"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="setting-row" id="tileRow">
-              <div class="setting-top">
-                <div class="setting-left tight">
-                  <div class="setting-name">平铺</div>
-                  <div class="info-wrap">
-                    <div class="info-icon">?</div>
-                    <div class="info-tip">生成可无缝重复排列的图像，适合创建重复图案和纹理。</div>
-                  </div>
-                  <div class="switch" id="tileSwitch" onclick="toggleTile()"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="third-grid" id="thirdGrid">
-            <div class="setting-row" id="profileRow">
+            <div class="setting-row profile-wide" id="profileRow">
               <div class="setting-top">
                 <div class="setting-left">
                   <div class="setting-name">个性化风格</div>
@@ -948,7 +1005,9 @@ input[type=range]::-moz-range-thumb {
                 <input class="select" id="profileInput" placeholder="输入风格p值">
               </div>
             </div>
+          </div>
 
+          <div class="third-grid" id="thirdGrid">
             <div class="setting-row" id="expRow">
               <div class="setting-top">
                 <div class="setting-left tight">
@@ -1143,34 +1202,31 @@ function renderTop() {
   document.getElementById('countName').textContent = counts[state.countIndex];
 }
 
-function moveRow(container, row) {
-  if (row.parentElement !== container) {
-    container.appendChild(row);
-  }
-}
-
 function renderAdvancedLayout() {
   const defaultGrid = document.getElementById('defaultGrid');
   const thirdGrid = document.getElementById('thirdGrid');
   const qualityRow = document.getElementById('qualityRow');
-  const rawRow = document.getElementById('rawRow');
-  const tileRow = document.getElementById('tileRow');
   const profileRow = document.getElementById('profileRow');
   const expRow = document.getElementById('expRow');
   const seedRow = document.getElementById('seedRow');
+  const qualityVisible = qualityRow.style.display !== 'none';
+  const expVisible = expRow.style.display !== 'none';
 
-  if (state.model === 'v7') {
-    [qualityRow, rawRow, tileRow].forEach((row) => moveRow(defaultGrid, row));
-    [profileRow, expRow, seedRow].forEach((row) => moveRow(thirdGrid, row));
-  } else {
-    [qualityRow, tileRow, expRow].forEach((row) => moveRow(defaultGrid, row));
-    [rawRow, profileRow, seedRow].forEach((row) => moveRow(thirdGrid, row));
-  }
+  defaultGrid.style.gridTemplateColumns = qualityVisible ? '1fr 1.9fr' : '1fr';
+  thirdGrid.style.gridTemplateColumns = expVisible ? '1fr 1fr' : '1fr';
+  profileRow.style.gridColumn = qualityVisible ? 'auto' : '1 / -1';
+  seedRow.style.gridColumn = expVisible ? 'auto' : '1 / -1';
 
   [defaultGrid, thirdGrid].forEach((grid) => {
     const hasVisibleRow = Array.from(grid.children).some((row) => row.style.display !== 'none');
     grid.style.display = hasVisibleRow ? 'grid' : 'none';
   });
+}
+
+function renderStyleSwitchLayout() {
+  const grid = document.querySelector('.style-switch-grid');
+  const tileVisible = document.getElementById('tileRow').style.display !== 'none';
+  grid.style.gridTemplateColumns = tileVisible ? '1fr 1fr' : '1fr';
 }
 
 function renderAdvancedToggle() {
@@ -1281,6 +1337,7 @@ function render() {
   renderQuality();
   renderRaw();
   renderTile();
+  renderStyleSwitchLayout();
   renderImage();
   renderExp();
   renderSeed();
