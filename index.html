@@ -33,24 +33,204 @@ body {
   padding: 14px 16px 0;
 }
 
-.img-quick-head span:last-child {
-  color: rgba(255,255,255,0.62);
+.upload-strip {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
-.img-quick-range {
+.upload-strip-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.upload-thumb-list {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.upload-item {
+  width: 74px;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.upload-thumb,
+.upload-add-btn {
+  width: 74px;
+  height: 74px;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+.upload-thumb {
+  position: relative;
+  overflow: hidden;
+  border: 0.5px solid rgba(255,255,255,0.1);
+  background: #2a2d35;
+  cursor: pointer;
+  transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.upload-thumb:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.18);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.22);
+}
+
+.upload-thumb.active {
+  border-color: rgba(91,141,238,0.44);
+  box-shadow: 0 0 0 1px rgba(91,141,238,0.18);
+}
+
+.upload-thumb img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.img-caption {
-  min-height: 14px;
-  font-size: 10px;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.2;
+.upload-remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(12,13,15,0.72);
+  color: rgba(255,255,255,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  cursor: pointer;
+  z-index: 2;
 }
 
-.ref-card.highlight {
-  border-color: rgba(91,141,238,0.42);
-  box-shadow: 0 0 0 1px rgba(91,141,238,0.16);
+.upload-ref-badge {
+  min-width: 66px;
+  height: 22px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 0.5px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.68);
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.upload-ref-badge.empty {
+  min-width: 74px;
+  padding: 0 10px;
+}
+
+.upload-thumb-wrap {
+  position: relative;
+}
+
+.thumb-type-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 94px;
+  padding: 6px;
+  border-radius: 12px;
+  border: 0.5px solid rgba(255,255,255,0.08);
+  background: #272a31;
+  box-shadow: 0 14px 24px rgba(0,0,0,0.28);
+  display: grid;
+  gap: 4px;
+  z-index: 30;
+}
+
+.thumb-type-menu.hidden {
+  display: none;
+}
+
+.thumb-type-option {
+  height: 28px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+  color: rgba(255,255,255,0.68);
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.thumb-type-option:hover {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.92);
+}
+
+.thumb-type-option.on {
+  background: rgba(91,141,238,0.18);
+  color: rgba(228,236,255,0.96);
+}
+
+.upload-ref-badge:hover {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.9);
+}
+
+.upload-ref-badge.type-image {
+  background: rgba(88,200,163,0.14);
+  border-color: rgba(88,200,163,0.24);
+  color: rgba(146,234,207,0.92);
+}
+
+.upload-ref-badge.type-style {
+  background: rgba(145,126,255,0.14);
+  border-color: rgba(145,126,255,0.24);
+  color: rgba(198,188,255,0.92);
+}
+
+.upload-ref-badge.type-subject {
+  background: rgba(234,171,78,0.14);
+  border-color: rgba(234,171,78,0.26);
+  color: rgba(255,219,164,0.94);
+}
+
+.upload-add-btn {
+  border: 1.5px dashed rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.upload-add-btn:hover {
+  border-color: rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.06);
+}
+
+.upload-add-plus {
+  font-size: 24px;
+  line-height: 1;
+  color: rgba(255,255,255,0.34);
+}
+
+.upload-add-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.24);
 }
 
 .input-box {
@@ -200,6 +380,174 @@ body {
 .send-btn:disabled {
   background: rgba(255,255,255,0.24);
   cursor: not-allowed;
+}
+
+.ref-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ref-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  font-weight: 600;
+}
+
+.ref-section-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.ref-section-dot.image { background: #58c8a3; }
+.ref-section-dot.style { background: #917eff; }
+.ref-section-dot.subject { background: #e6a54a; }
+
+.ref-section-meta {
+  font-size: 12px;
+  color: rgba(255,255,255,0.42);
+}
+
+.ref-dropzone {
+  min-height: 92px;
+  padding: 8px;
+  border-radius: 14px;
+  border: 1px dashed rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.02);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ref-dropzone.dragover {
+  border-color: rgba(91,141,238,0.38);
+  background: rgba(91,141,238,0.08);
+}
+
+.ref-drop-empty {
+  color: rgba(255,255,255,0.26);
+  font-size: 12px;
+  padding: 0 6px;
+}
+
+.ref-section-thumb {
+  width: 72px;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+
+.ref-section-add {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  border: 1.5px dashed rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: rgba(255,255,255,0.34);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.16s ease;
+}
+
+.ref-section-add:hover {
+  border-color: rgba(255,255,255,0.24);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.62);
+}
+
+.ref-section-add-plus {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.ref-section-add-text {
+  font-size: 11px;
+}
+
+.ref-drop-empty-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.ref-drop-empty-text {
+  color: rgba(255,255,255,0.3);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.ref-section-thumb-card {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  border: 0.5px solid rgba(255,255,255,0.12);
+  background: #272a31;
+  cursor: pointer;
+}
+
+.ref-section-thumb-remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(12,13,15,0.72);
+  color: rgba(255,255,255,0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.ref-section-thumb-card.active {
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.12);
+}
+
+.ref-section-thumb-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ref-section-thumb-label {
+  min-height: 14px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.48);
+}
+
+.ref-section-slider {
+  display: grid;
+  gap: 8px;
+}
+
+.ref-section-slider-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(255,255,255,0.72);
+  font-size: 13px;
 }
 
 .param-panel {
@@ -791,8 +1139,19 @@ input[type=range]::-moz-range-thumb {
 </head>
 <body>
 
-<div class="generator">
+  <div class="generator">
   <div class="input-area">
+    <div class="upload-strip">
+      <div class="upload-strip-row">
+        <div class="upload-thumb-list" id="imageThumbList"></div>
+        <label class="upload-add-btn" for="imageInput">
+          <div class="upload-add-plus">+</div>
+          <div class="upload-add-label">图片</div>
+        </label>
+        <input id="imageInput" type="file" accept="image/*" multiple hidden>
+      </div>
+    </div>
+
     <textarea class="input-box" id="promptInput" rows="2" placeholder="描述你想生成的画面"></textarea>
   </div>
 
@@ -914,6 +1273,19 @@ input[type=range]::-moz-range-thumb {
           </div>
         </div>
 
+        <div class="advanced-block hidden" id="imageParamsBlock">
+          <div class="advanced-toggle open">
+            <div class="advanced-toggle-title">图片参考</div>
+          </div>
+          <div class="advanced-content" id="imageParamsContent">
+            <div class="ref-grid" id="refGrid">
+              <div class="ref-card" id="imageRefCard"></div>
+              <div class="ref-card" id="styleRefCard"></div>
+              <div class="ref-card" id="subjectRefCard"></div>
+            </div>
+          </div>
+        </div>
+
         <div class="advanced-block" id="advancedBlock">
         <div class="advanced-toggle" id="advancedToggle" onclick="toggleAdvanced()">
           <div class="advanced-toggle-title">高级设置</div>
@@ -935,9 +1307,9 @@ input[type=range]::-moz-range-thumb {
                   </div>
                 </div>
                 <select class="select" id="qualitySelect">
-                  <option value="1" selected>1</option>
-                  <option value="2">2</option>
-                  <option value="4">4</option>
+                  <option value="1" selected>基础</option>
+                  <option value="2">标准</option>
+                  <option value="4">超清</option>
                 </select>
               </div>
             </div>
@@ -956,41 +1328,7 @@ input[type=range]::-moz-range-thumb {
             </div>
           </div>
 
-          <div class="third-grid" id="thirdGrid">
-            <div class="setting-row" id="expRow">
-              <div class="setting-top">
-                <div class="setting-left tight">
-                  <div class="setting-name">风格实验</div>
-                  <div class="info-wrap">
-                    <div class="info-icon">?</div>
-                    <div class="info-tip">生成更详细、动态、创意且色调映射更丰富的图像。</div>
-                  </div>
-                  <div class="switch" id="expSwitch" onclick="toggleExp()"></div>
-                </div>
-                <div class="setting-value" id="expValue">0</div>
-              </div>
-              <div class="setting-body hidden" id="expBody">
-                <input type="range" id="expRange" min="0" max="100" value="0" step="1">
-              </div>
-            </div>
-
-            <div class="setting-row" id="seedRow">
-              <div class="setting-top">
-                <div class="setting-left tight">
-                  <div class="setting-name">种子测试</div>
-                  <div class="info-wrap">
-                    <div class="info-icon">?</div>
-                    <div class="info-tip">固定初始状态，一键复刻作品</div>
-                  </div>
-                  <div class="switch" id="seedSwitch" onclick="toggleSeed()"></div>
-                </div>
-                <div class="setting-value" id="seedValue">0</div>
-              </div>
-              <div class="setting-body hidden" id="seedBody">
-                <input type="range" id="seedRange" min="0" max="4294967295" value="0" step="1">
-              </div>
-            </div>
-          </div>
+          <div class="third-grid hidden" id="thirdGrid"></div>
         </div>
         </div>
       </div>
@@ -1004,6 +1342,11 @@ const state = {
   aspectIndex: 0,
   countIndex: 0,
   prompt: '',
+  images: [],
+  activeTypeMenuId: null,
+  iw: 10,
+  sw: 100,
+  ow: 100,
   raw: false,
   draft: false,
   turbo: false,
@@ -1013,19 +1356,205 @@ const state = {
   stylize: 1000,
   weird: 100,
   chaos: 5,
-  expOn: false,
-  exp: 0,
-  seedOn: false,
-  seedValue: 0,
   styleOpen: true,
   advancedOpen: false
 };
 
 const aspects = ['16:9 · 自适应', '1:1 · 方形', '9:16 · 竖版', '4:3', '3:4'];
 const counts = ['4张', '2张', '1张'];
+const refTypeMeta = {
+  image: {
+    label: '元素参考',
+    shortLabel: '元素',
+    sliderLabel: '元素权重',
+    range: [0, 30, 1],
+    format: value => (value / 10).toFixed(1)
+  },
+  style: {
+    label: '风格参考',
+    shortLabel: '风格',
+    sliderLabel: '风格强度',
+    range: [0, 100, 1],
+    format: value => String(value)
+  },
+  subject: {
+    label: '主体参考',
+    shortLabel: '主体',
+    sliderLabel: '主体强度',
+    range: [1, 1000, 10],
+    format: value => String(value)
+  }
+};
+
+function getImageById(id) {
+  return state.images.find((image) => image.id === id) || null;
+}
+
+function getImagesByType(type) {
+  return state.images.filter((image) => image.refType === type);
+}
+
+function subjectReferenceAvailable() {
+  return state.model === 'v7';
+}
+
+function normalizeReferenceState() {
+  if (!subjectReferenceAvailable()) {
+    state.images = state.images.map((image) => image.refType === 'subject' ? { ...image, refType: null } : image);
+  }
+}
+
+function createImageRecord(src) {
+  return {
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    src,
+    refType: null
+  };
+}
+
+function getReferenceBadgeText(image) {
+  if (!image.refType) return '设置参考';
+  return refTypeMeta[image.refType].shortLabel;
+}
+
+function removeImageById(id) {
+  state.images = state.images.filter((image) => image.id !== id);
+  if (state.activeTypeMenuId === id) {
+    state.activeTypeMenuId = null;
+  }
+  render();
+}
+
+function moveImageToType(id, type) {
+  const image = getImageById(id);
+  if (!image) return;
+  if (type === 'subject' && !subjectReferenceAvailable()) return;
+
+  if (type === 'subject') {
+    state.images.forEach((item) => {
+      if (item.id !== id && item.refType === 'subject') {
+        item.refType = null;
+      }
+    });
+  }
+
+  image.refType = type;
+}
+
+function toggleTypeMenu(id) {
+  state.activeTypeMenuId = state.activeTypeMenuId === id ? null : id;
+  renderImageThumbs();
+}
+
+function dragRefImage(event, id) {
+  event.dataTransfer.setData('text/plain', id);
+  event.dataTransfer.effectAllowed = 'move';
+}
+
+function allowRefDrop(event) {
+  event.preventDefault();
+}
+
+function handleRefDrop(event, type) {
+  event.preventDefault();
+  const id = event.dataTransfer.getData('text/plain');
+  if (!id) return;
+  moveImageToType(id, type);
+  render();
+}
+
+function updateReferenceWeight(type, value) {
+  const numeric = Number(value);
+  if (type === 'image') {
+    state.iw = numeric;
+  } else if (type === 'style') {
+    state.sw = numeric;
+  } else if (type === 'subject') {
+    state.ow = numeric;
+  }
+  renderImageReferenceBlock();
+}
+
+function renderImageThumbs() {
+  const list = document.getElementById('imageThumbList');
+  if (!list) return;
+  list.innerHTML = state.images.map((image) => `
+    <div class="upload-item">
+      <div class="upload-thumb-wrap">
+        <div class="upload-thumb" draggable="true" ondragstart="dragRefImage(event, '${image.id}')">
+          <img src="${image.src}" alt="上传图片">
+          <button class="upload-remove" onclick="event.stopPropagation(); removeImageById('${image.id}')">×</button>
+        </div>
+        <div class="thumb-type-menu ${state.activeTypeMenuId === image.id ? '' : 'hidden'}">
+          <button class="thumb-type-option ${image.refType === 'image' ? 'on' : ''}" onclick="setImageReferenceType('${image.id}', 'image')">元素参考</button>
+          <button class="thumb-type-option ${image.refType === 'style' ? 'on' : ''}" onclick="setImageReferenceType('${image.id}', 'style')">风格参考</button>
+          ${subjectReferenceAvailable() ? `<button class="thumb-type-option ${image.refType === 'subject' ? 'on' : ''}" onclick="setImageReferenceType('${image.id}', 'subject')">主体参考</button>` : ''}
+        </div>
+      </div>
+      <button class="upload-ref-badge ${image.refType ? `type-${image.refType}` : 'empty'}" onclick="toggleTypeMenu('${image.id}')">${getReferenceBadgeText(image)}</button>
+    </div>
+  `).join('');
+}
+
+function setImageReferenceType(id, type) {
+  moveImageToType(id, type);
+  state.activeTypeMenuId = null;
+  render();
+}
+
+function buildInlineRefCard(type) {
+  const card = document.getElementById(`${type}RefCard`);
+  if (!card) return;
+  const meta = refTypeMeta[type];
+  const images = getImagesByType(type);
+  const value = type === 'image' ? state.iw : type === 'style' ? state.sw : state.ow;
+  const [min, max, step] = meta.range;
+  const countText = type === 'subject' ? `${images.length}/1` : `${images.length}/4`;
+
+  card.style.display = type === 'subject' && !subjectReferenceAvailable() ? 'none' : '';
+  card.innerHTML = `
+    <div class="ref-head">
+      <div class="ref-title">
+        <span>${meta.label}</span>
+      </div>
+      <div class="setting-value">${countText}</div>
+    </div>
+    <div class="ref-slot" ondragover="allowRefDrop(event)" ondrop="handleRefDrop(event, '${type}')">
+      ${images.length ? images.map((image, index) => `
+        <div class="ref-thumb">
+          <button class="upload-remove" onclick="event.stopPropagation(); removeImageById('${image.id}')">×</button>
+          <img src="${image.src}" alt="${meta.label}${index + 1}">
+        </div>
+      `).join('') : `
+        <div class="ref-empty">拖拽顶部图片到这里，或点击上方图片下方标签设置为${meta.shortLabel}</div>
+      `}
+    </div>
+    <div class="ref-slider">
+      <div class="ref-slider-head">
+        <div class="setting-name">${meta.sliderLabel}</div>
+        <div class="setting-value">${meta.format(value)}</div>
+      </div>
+      <input type="range" min="${min}" max="${max}" step="${step}" value="${value}" oninput="updateReferenceWeight('${type}', this.value)">
+    </div>
+  `;
+}
+
+function renderImageReferenceBlock() {
+  const block = document.getElementById('imageParamsBlock');
+  if (!block) return;
+  const visible = state.images.length > 0;
+  block.classList.toggle('hidden', !visible);
+  if (!visible) return;
+
+  buildInlineRefCard('image');
+  buildInlineRefCard('style');
+  buildInlineRefCard('subject');
+  block.querySelectorAll('input[type="range"]').forEach(updateTrack);
+}
 
 function cycleModel() {
   state.model = state.model === 'v7' ? 'niji7' : 'v7';
+  normalizeReferenceState();
   render();
 }
 
@@ -1079,21 +1608,6 @@ function resetStyleSettings() {
   updateTrack(document.getElementById('stylizeRange'));
   updateTrack(document.getElementById('weirdRange'));
   updateTrack(document.getElementById('chaosRange'));
-}
-
-function toggleExp() {
-  if (state.model !== 'v7') return;
-  state.expOn = !state.expOn;
-  renderExp();
-}
-
-function toggleSeed() {
-  state.seedOn = !state.seedOn;
-  if (state.seedOn && Number(state.seedValue) === 0) {
-    state.seedValue = Math.floor(Math.random() * 4294967295);
-    document.getElementById('seedRange').value = state.seedValue;
-  }
-  renderSeed();
 }
 
 function toggleAdvanced() {
@@ -1203,28 +1717,10 @@ function renderQuality() {
   row.style.display = state.model === 'v7' ? '' : 'none';
 }
 
-function renderExp() {
-  const row = document.getElementById('expRow');
-  const sw = document.getElementById('expSwitch');
-  const body = document.getElementById('expBody');
-  const visible = state.model === 'v7';
-  row.style.display = visible ? '' : 'none';
-  sw.className = 'switch' + (state.expOn ? ' on' : '') + (!visible ? ' disabled' : '');
-  body.classList.toggle('hidden', !state.expOn || !visible);
-  document.getElementById('expValue').textContent = state.expOn && visible ? state.exp : '';
-  if (!visible) state.expOn = false;
-}
-
-function renderSeed() {
-  const sw = document.getElementById('seedSwitch');
-  const body = document.getElementById('seedBody');
-  sw.className = 'switch' + (state.seedOn ? ' on' : '');
-  body.classList.toggle('hidden', !state.seedOn);
-  document.getElementById('seedValue').textContent = state.seedOn ? state.seedValue : '';
-}
-
 function render() {
   renderTop();
+  renderImageThumbs();
+  renderImageReferenceBlock();
   renderRawMode();
   renderDraftMode();
   renderSpeedMode();
@@ -1232,8 +1728,6 @@ function render() {
   renderStyleToggle();
   renderAdvancedToggle();
   renderQuality();
-  renderExp();
-  renderSeed();
   renderAdvancedLayout();
 }
 
@@ -1249,6 +1743,24 @@ document.getElementById('qualitySelect').addEventListener('change', (e) => {
   state.quality = e.target.value;
 });
 
+document.getElementById('imageInput').addEventListener('change', (e) => {
+  const files = Array.from(e.target.files || []);
+  if (!files.length) return;
+  files.forEach((file) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const image = createImageRecord(event.target.result);
+      image.refType = 'image';
+      state.images.push(image);
+      state.styleOpen = true;
+      state.activeTypeMenuId = image.id;
+      render();
+    };
+    reader.readAsDataURL(file);
+  });
+  e.target.value = '';
+});
+
 document.getElementById('promptInput').addEventListener('input', (e) => {
   state.prompt = e.target.value;
   renderSendButton();
@@ -1261,9 +1773,7 @@ document.getElementById('profileInput').addEventListener('input', (e) => {
 [
   ['stylizeRange', 'stylize', value => value, 'stylizeValue'],
   ['weirdRange', 'weird', value => value, 'weirdValue'],
-  ['chaosRange', 'chaos', value => value, 'chaosValue'],
-  ['expRange', 'exp', value => value, 'expValue'],
-  ['seedRange', 'seedValue', value => value, 'seedValue']
+  ['chaosRange', 'chaos', value => value, 'chaosValue']
 ].forEach(([id, key, formatter, labelId]) => {
   const input = document.getElementById(id);
   input.addEventListener('input', () => {
@@ -1274,6 +1784,15 @@ document.getElementById('profileInput').addEventListener('input', (e) => {
     updateTrack(input);
   });
   updateTrack(input);
+});
+
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('.upload-item')) {
+    if (state.activeTypeMenuId) {
+      state.activeTypeMenuId = null;
+      renderImageThumbs();
+    }
+  }
 });
 
 render();
