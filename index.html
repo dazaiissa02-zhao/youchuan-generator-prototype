@@ -33,87 +33,24 @@ body {
   padding: 14px 16px 0;
 }
 
-.img-upload-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
+.img-quick-head span:last-child {
+  color: rgba(255,255,255,0.62);
 }
 
-.img-thumb-list {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.img-add-btn,
-.img-thumb {
-  width: 52px;
-  height: 52px;
-  border-radius: 10px;
-  flex-shrink: 0;
-}
-
-.img-add-btn {
-  border: 1.5px dashed rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.03);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  cursor: pointer;
-  transition: all 0.18s ease;
-}
-
-.img-add-btn:hover {
-  border-color: rgba(255,255,255,0.28);
-  background: rgba(255,255,255,0.06);
-}
-
-.img-add-plus {
-  font-size: 18px;
-  line-height: 1;
-  color: rgba(255,255,255,0.34);
-}
-
-.img-add-label {
-  font-size: 10px;
-  color: rgba(255,255,255,0.24);
-}
-
-.img-thumb {
-  position: relative;
-  overflow: hidden;
-  border: 0.5px solid rgba(255,255,255,0.1);
-  background: #2a2d35;
-}
-
-.img-thumb img {
+.img-quick-range {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
 }
 
-.img-rm {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #f0556a;
-  border: 1.5px solid #1c1d20;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 9px;
-  color: #fff;
-  cursor: pointer;
-  font-weight: 600;
+.img-caption {
+  min-height: 14px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.2;
+}
+
+.ref-card.highlight {
+  border-color: rgba(91,141,238,0.42);
+  box-shadow: 0 0 0 1px rgba(91,141,238,0.16);
 }
 
 .input-box {
@@ -185,38 +122,6 @@ body {
   position: relative;
   display: inline-flex;
 }
-.mode-pill {
-  height: 34px;
-  padding: 3px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.06);
-  border: 0.5px solid rgba(255,255,255,0.08);
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-}
-.mode-seg {
-  min-width: 68px;
-  height: 28px;
-  padding: 0 14px;
-  border: none;
-  border-radius: 999px;
-  background: transparent;
-  color: rgba(255,255,255,0.44);
-  font: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.18s ease;
-}
-.mode-seg.on {
-  background: rgba(255,255,255,0.14);
-  color: rgba(255,255,255,0.94);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
-}
-.mode-seg:hover:not(.on) {
-  color: rgba(255,255,255,0.72);
-}
 .tool-tip {
   position: absolute;
   right: 0;
@@ -239,24 +144,46 @@ body {
   opacity: 1;
   visibility: visible;
 }
+
+.mode-toggle-btn {
+  position: relative;
+}
+
+.mini-switch {
+  width: 32px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.1);
+  border: 0.5px solid rgba(255,255,255,0.08);
+  position: relative;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.mini-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  transition: transform 0.18s ease;
+}
+
+.mini-switch.on {
+  background: rgba(91,141,238,0.3);
+  border-color: rgba(91,141,238,0.42);
+}
+
+.mini-switch.on::after {
+  transform: translateX(14px);
+}
 .chip-label { font-size: 13px; }
 .chip-meta { font-size: 11px; color: rgba(255,255,255,0.3); }
 .arr { font-size: 9px; color: rgba(255,255,255,0.3); }
 .vsep { width: 1px; height: 14px; background: rgba(255,255,255,0.1); }
-
-.img-badge {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #5b8dee;
-  border: 1.5px solid #1c1d20;
-  display: none;
-}
-
-.img-badge.show { display: block; }
 
 .send-btn {
   width: 40px;
@@ -299,33 +226,6 @@ body {
   gap: 12px;
 }
 
-.mode-block {
-  order: -1;
-  padding: 12px;
-  border-radius: 10px;
-  border: 0.5px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.03);
-}
-
-.mode-grid {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.mode-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-}
-
-.mode-label {
-  font-size: 12px;
-  color: rgba(255,255,255,0.58);
-}
-
 .default-grid {
   display: grid;
   grid-template-columns: 1fr 1.9fr;
@@ -341,7 +241,6 @@ body {
 }
 
 .advanced-block {
-  order: 1;
   display: grid;
   gap: 12px;
 }
@@ -362,10 +261,13 @@ body {
 }
 
 .image-block {
-  order: 2;
   display: grid;
   gap: 12px;
 }
+
+#imageParamsBlock { order: 1; }
+#defaultAdvancedBlock { order: 2; }
+#advancedBlock { order: 3; }
 
 .image-block.hidden { display: none; }
 
@@ -423,6 +325,7 @@ body {
   align-items: center;
   gap: 8px;
   min-height: 52px;
+  flex-wrap: wrap;
 }
 
 .ref-add-btn {
@@ -550,6 +453,11 @@ body {
 
 .advanced-content.hidden {
   display: none;
+}
+
+.ref-empty {
+  font-size: 12px;
+  color: rgba(255,255,255,0.24);
 }
 
 .image-setting + .image-setting {
@@ -907,6 +815,11 @@ input[type=range]::-moz-range-thumb {
         <span class="chip-label" id="aspectName">16:9 · 自适应</span>
         <span class="arr">▾</span>
       </button>
+
+      <div class="tool-tip-wrap">
+        <button class="mode-toggle-btn mini-switch" id="rawModeBtn" onclick="toggleRawMode()" title="创意模式"></button>
+        <div class="tool-tip" id="rawModeTip">默认模式：风格更鲜明，画面更具艺术表现力</div>
+      </div>
     </div>
 
     <div class="toolbar-right">
@@ -942,43 +855,6 @@ input[type=range]::-moz-range-thumb {
   <div class="param-panel open" id="paramPanel">
     <div class="panel-scroll">
       <div class="settings-list">
-        <div class="mode-block">
-          <div class="mode-grid">
-            <div class="mode-item">
-              <div class="mode-label">模式</div>
-              <div class="tool-tip-wrap">
-                <div class="mode-pill" id="rawModeBtn">
-                  <button class="mode-seg" id="rawStandardSeg" onclick="setRawMode(false)">创意</button>
-                  <button class="mode-seg" id="rawRawSeg" onclick="setRawMode(true)">原生</button>
-                </div>
-                <div class="tool-tip" id="rawModeTip">标准模式，默认美学风格</div>
-              </div>
-            </div>
-
-            <div class="mode-item" id="qualityModeItem">
-              <div class="mode-label">画质</div>
-              <div class="tool-tip-wrap">
-                <div class="mode-pill" id="draftModeBtn">
-                  <button class="mode-seg" id="draftStandardSeg" onclick="setDraftMode(false)">标准</button>
-                  <button class="mode-seg" id="draftDraftSeg" onclick="setDraftMode(true)">草图</button>
-                </div>
-                <div class="tool-tip" id="draftModeTip">标准模式，正常生成</div>
-              </div>
-            </div>
-
-            <div class="mode-item">
-              <div class="mode-label">速度</div>
-              <div class="tool-tip-wrap">
-                <div class="mode-pill" id="speedModeBtn">
-                  <button class="mode-seg" id="speedFastSeg" onclick="setTurboMode(false)">快速</button>
-                  <button class="mode-seg" id="speedTurboSeg" onclick="setTurboMode(true)">极速</button>
-                </div>
-                <div class="tool-tip" id="speedModeTip">快速模式，默认生成速度</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="advanced-block" id="defaultAdvancedBlock">
           <div class="advanced-toggle open" id="styleToggle" onclick="toggleStyleBlock()">
             <div class="advanced-toggle-title">美学风格</div>
@@ -1038,109 +914,7 @@ input[type=range]::-moz-range-thumb {
           </div>
         </div>
 
-        <div class="image-block" id="imageParamsBlock">
-          <div class="advanced-toggle" id="imageToggle" onclick="toggleImageRefs()">
-            <div class="advanced-toggle-title">图片参考</div>
-            <div class="advanced-toggle-meta">
-              <button class="reset-btn" onclick="event.stopPropagation(); resetImageParams();" title="参数重置">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                  <path d="M13.5 4.5V1.8M13.5 1.8H10.8M13.5 1.8 10.7 4.6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M13 8A5 5 0 1 1 9 3.1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-                </svg>
-              </button>
-              <span id="imageToggleText">展开</span>
-              <span class="chevron"></span>
-            </div>
-          </div>
-
-          <div class="advanced-content hidden" id="imageContent">
-          <div class="image-panel">
-            <div class="ref-grid">
-              <div class="ref-card">
-                <div class="ref-head">
-                  <div class="ref-title">
-                    <span>图像参考</span>
-                    <div class="info-wrap">
-                      <div class="info-icon">?</div>
-                      <div class="info-tip">提取参考图的内容元素进行创作</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="ref-slot">
-                  <div class="img-thumb-list" id="imageRefList"></div>
-                  <label class="ref-add-btn" for="imageRefInput">
-                    <div class="img-add-plus">+</div>
-                    <div class="img-add-label">图像</div>
-                  </label>
-                  <input id="imageRefInput" type="file" accept="image/*" multiple hidden>
-                </div>
-                <div class="ref-slider" id="imageRefSlider">
-                  <div class="ref-slider-head">
-                    <div class="setting-name">图像权重</div>
-                    <div class="setting-value" id="iwValue">1.0</div>
-                  </div>
-                  <input type="range" id="iwRange" min="0" max="30" value="10" step="1">
-                </div>
-              </div>
-
-              <div class="ref-card" id="styleRefCard">
-                <div class="ref-head">
-                  <div class="ref-title">
-                    <span>风格参考</span>
-                    <div class="info-wrap">
-                      <div class="info-icon">?</div>
-                      <div class="info-tip">提取参考图的艺术风格进行创作</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="ref-slot">
-                  <div class="img-thumb-list" id="styleRefList"></div>
-                  <label class="ref-add-btn" for="styleRefInput">
-                    <div class="img-add-plus">+</div>
-                    <div class="img-add-label">图像</div>
-                  </label>
-                  <input id="styleRefInput" type="file" accept="image/*" multiple hidden>
-                </div>
-                <div class="ref-slider" id="styleRefSlider">
-                  <div class="ref-slider-head">
-                    <div class="setting-name">风格强度</div>
-                    <div class="setting-value" id="swValue">100</div>
-                  </div>
-                  <input type="range" id="swRange" min="0" max="100" value="100" step="1">
-                </div>
-              </div>
-
-              <div class="ref-card" id="omniRefCard">
-                <div class="ref-head">
-                  <div class="ref-title">
-                    <span>全能参考</span>
-                    <div class="info-wrap">
-                      <div class="info-icon">?</div>
-                      <div class="info-tip">全维度复刻参考图主体，高度还原</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="ref-slot">
-                  <div class="img-thumb-list" id="omniRefList"></div>
-                  <label class="ref-add-btn" for="omniRefInput">
-                    <div class="img-add-plus">+</div>
-                    <div class="img-add-label">图像</div>
-                  </label>
-                  <input id="omniRefInput" type="file" accept="image/*" hidden>
-                </div>
-                <div class="ref-slider" id="omniRefSlider">
-                  <div class="ref-slider-head">
-                    <div class="setting-name">全能强度</div>
-                    <div class="setting-value" id="owValue">100</div>
-                  </div>
-                  <input type="range" id="owRange" min="1" max="1000" value="100" step="10">
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>
-
+        <div class="advanced-block" id="advancedBlock">
         <div class="advanced-toggle" id="advancedToggle" onclick="toggleAdvanced()">
           <div class="advanced-toggle-title">高级设置</div>
           <div class="advanced-toggle-meta">
@@ -1218,6 +992,7 @@ input[type=range]::-moz-range-thumb {
             </div>
           </div>
         </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1229,10 +1004,6 @@ const state = {
   aspectIndex: 0,
   countIndex: 0,
   prompt: '',
-  images: [],
-  imageRef: [],
-  styleRef: [],
-  omniRef: [],
   raw: false,
   draft: false,
   turbo: false,
@@ -1247,31 +1018,14 @@ const state = {
   seedOn: false,
   seedValue: 0,
   styleOpen: true,
-  advancedOpen: false,
-  imageRefsOpen: false,
-  styleOn: false,
-  objectOn: false,
-  iw: 10,
-  sw: 100,
-  ow: 100
+  advancedOpen: false
 };
 
 const aspects = ['16:9 · 自适应', '1:1 · 方形', '9:16 · 竖版', '4:3', '3:4'];
 const counts = ['4张', '2张', '1张'];
 
-function hasImages() {
-  return state.imageRef.length > 0 || state.styleRef.length > 0 || state.omniRef.length > 0;
-}
-
-function objectReferenceEnabled() {
-  return state.model === 'v7' && state.images.length === 1;
-}
-
 function cycleModel() {
   state.model = state.model === 'v7' ? 'niji7' : 'v7';
-  if (state.model !== 'v7') {
-    state.objectOn = false;
-  }
   render();
 }
 
@@ -1298,81 +1052,18 @@ function setRawMode(enabled) {
   renderRawMode();
 }
 
+function toggleRawMode() {
+  setRawMode(!state.raw);
+}
+
 function setDraftMode(enabled) {
   state.draft = enabled;
-  if (state.draft) {
-    state.omniRef = [];
-  }
   renderDraftMode();
-  renderReferenceUploads();
-  renderObject();
 }
 
 function setTurboMode(enabled) {
   state.turbo = enabled;
   renderSpeedMode();
-}
-
-function removeImage(index) {
-  state.images.splice(index, 1);
-  if (!hasImages()) {
-    state.styleOn = false;
-  }
-  if (!objectReferenceEnabled()) {
-    state.objectOn = false;
-  }
-  render();
-}
-
-function setReferenceImage(type, src) {
-  if (type === 'omniRef') {
-    state[type] = [src];
-  } else {
-    state[type].push(src);
-  }
-  renderReferenceUploads();
-  renderObject();
-}
-
-function removeReferenceImage(type, index) {
-  if (index == null) {
-    state[type] = [];
-  } else {
-    state[type].splice(index, 1);
-  }
-  renderReferenceUploads();
-  renderObject();
-}
-
-function toggleStyle() {
-  if (!hasImages()) return;
-  state.styleOn = !state.styleOn;
-  renderStyle();
-}
-
-function toggleObject() {
-  if (!objectReferenceEnabled()) return;
-  state.objectOn = !state.objectOn;
-  renderObject();
-}
-
-function resetImageParams() {
-  state.iw = 10;
-  state.sw = 100;
-  state.ow = 100;
-  state.imageRef = [];
-  state.styleRef = [];
-  state.omniRef = [];
-  document.getElementById('iwRange').value = state.iw;
-  document.getElementById('swRange').value = state.sw;
-  document.getElementById('owRange').value = state.ow;
-  updateTrack(document.getElementById('iwRange'));
-  updateTrack(document.getElementById('swRange'));
-  updateTrack(document.getElementById('owRange'));
-  renderIW();
-  renderStyle();
-  renderObject();
-  renderReferenceUploads();
 }
 
 function resetStyleSettings() {
@@ -1415,11 +1106,6 @@ function toggleStyleBlock() {
   renderStyleToggle();
 }
 
-function toggleImageRefs() {
-  state.imageRefsOpen = !state.imageRefsOpen;
-  renderImageToggle();
-}
-
 function renderTop() {
   document.getElementById('modelName').textContent = state.model === 'v7' ? 'Midjourney V7' : 'Midjourney Niji 7';
   document.getElementById('aspectName').textContent = aspects[state.aspectIndex];
@@ -1459,28 +1145,23 @@ function renderStyleToggle() {
   document.getElementById('styleToggleText').textContent = state.styleOpen ? '收起' : '展开';
 }
 
-function renderImageToggle() {
-  const toggle = document.getElementById('imageToggle');
-  const content = document.getElementById('imageContent');
-  toggle.classList.toggle('open', state.imageRefsOpen);
-  content.classList.toggle('hidden', !state.imageRefsOpen);
-  document.getElementById('imageToggleText').textContent = state.imageRefsOpen ? '收起' : '展开';
-}
-
 function renderRawMode() {
   const btn = document.getElementById('rawModeBtn');
-  const standardSeg = document.getElementById('rawStandardSeg');
-  const rawSeg = document.getElementById('rawRawSeg');
   const tip = document.getElementById('rawModeTip');
-  btn.setAttribute('title', state.raw ? 'Raw 模式已开启' : '标准模式');
-  standardSeg.classList.toggle('on', !state.raw);
-  rawSeg.classList.toggle('on', state.raw);
-  tip.textContent = state.raw ? '减少创意干预，精准匹配提示词' : '默认美学风格';
+  btn.classList.toggle('on', state.raw);
+  btn.setAttribute('title', state.raw ? '原生模式' : '创意模式');
+  tip.textContent = state.raw
+    ? 'Raw 模式：风格更克制，结果更真实自然'
+    : '默认模式：风格更鲜明，画面更具艺术表现力';
 }
 
 function renderDraftMode() {
   const item = document.getElementById('qualityModeItem');
   const btn = document.getElementById('draftModeBtn');
+  if (!item || !btn) {
+    state.draft = false;
+    return;
+  }
   const wrap = btn.parentElement;
   const standardSeg = document.getElementById('draftStandardSeg');
   const draftSeg = document.getElementById('draftDraftSeg');
@@ -1501,6 +1182,10 @@ function renderSpeedMode() {
   const fastSeg = document.getElementById('speedFastSeg');
   const turboSeg = document.getElementById('speedTurboSeg');
   const tip = document.getElementById('speedModeTip');
+  if (!fastSeg || !turboSeg || !tip) {
+    state.turbo = false;
+    return;
+  }
   fastSeg.classList.toggle('on', !state.turbo);
   turboSeg.classList.toggle('on', state.turbo);
   tip.textContent = state.turbo ? '极速模式，更高速度生成' : '快速模式，默认生成速度';
@@ -1516,67 +1201,6 @@ function renderSendButton() {
 function renderQuality() {
   const row = document.getElementById('qualityRow');
   row.style.display = state.model === 'v7' ? '' : 'none';
-}
-
-function renderImageThumbs() {
-  const list = document.getElementById('imageThumbList');
-  if (!list) return;
-  list.innerHTML = state.images.map((src, index) => `
-    <div class="img-thumb">
-      <img src="${src}" alt="上传图像预览 ${index + 1}">
-      <div class="img-rm" onclick="removeImage(${index})">×</div>
-    </div>
-  `).join('');
-}
-
-function renderReferenceSlot(listId, type) {
-  const list = document.getElementById(listId);
-  list.innerHTML = state[type].map((src, index) => `
-    <div class="ref-thumb">
-      <img src="${src}" alt="参考图预览">
-      <div class="img-rm" onclick="removeReferenceImage('${type}', ${index})">×</div>
-    </div>
-  `).join('');
-}
-
-function renderReferenceUploads() {
-  renderReferenceSlot('imageRefList', 'imageRef');
-  renderReferenceSlot('styleRefList', 'styleRef');
-  renderReferenceSlot('omniRefList', 'omniRef');
-}
-
-function renderImage() {
-  renderImageThumbs();
-  const refGrid = document.querySelector('.ref-grid');
-  if (refGrid) {
-    refGrid.style.gridTemplateColumns = state.model === 'v7' && !state.draft ? '1fr 1fr 1fr' : '1fr 1fr';
-  }
-  renderImageToggle();
-}
-
-function renderIW() {
-  const range = document.getElementById('iwRange');
-  range.max = state.model === 'v7' ? 30 : 20;
-  if (state.iw > Number(range.max)) {
-    state.iw = Number(range.max);
-    range.value = state.iw;
-  }
-  document.getElementById('iwValue').textContent = (state.iw / 10).toFixed(1);
-}
-
-function renderStyle() {
-  const card = document.getElementById('styleRefCard');
-  card.style.display = '';
-  document.getElementById('swValue').textContent = state.sw;
-}
-
-function renderObject() {
-  const card = document.getElementById('omniRefCard');
-  const row = document.getElementById('omniRefSlider');
-  const visibleCard = state.model === 'v7' && !state.draft;
-  card.style.display = visibleCard ? '' : 'none';
-  row.classList.toggle('hidden', !visibleCard);
-  document.getElementById('owValue').textContent = state.ow;
 }
 
 function renderExp() {
@@ -1608,13 +1232,9 @@ function render() {
   renderStyleToggle();
   renderAdvancedToggle();
   renderQuality();
-  renderImage();
   renderExp();
   renderSeed();
   renderAdvancedLayout();
-  renderIW();
-  renderStyle();
-  renderObject();
 }
 
 function updateTrack(input) {
@@ -1624,26 +1244,6 @@ function updateTrack(input) {
   const pct = ((val - min) / (max - min) * 100).toFixed(1);
   input.style.background = `linear-gradient(to right, rgba(255,255,255,0.65) ${pct}%, rgba(255,255,255,0.1) ${pct}%)`;
 }
-
-[
-  ['imageRefInput', 'imageRef'],
-  ['styleRefInput', 'styleRef'],
-  ['omniRefInput', 'omniRef']
-].forEach(([id, type]) => {
-  document.getElementById(id).addEventListener('change', (e) => {
-    const files = Array.from(e.target.files || []);
-    if (!files.length) return;
-    const selectedFiles = type === 'omniRef' ? files.slice(0, 1) : files;
-    selectedFiles.forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setReferenceImage(type, event.target.result);
-      };
-      reader.readAsDataURL(file);
-    });
-    e.target.value = '';
-  });
-});
 
 document.getElementById('qualitySelect').addEventListener('change', (e) => {
   state.quality = e.target.value;
@@ -1663,10 +1263,7 @@ document.getElementById('profileInput').addEventListener('input', (e) => {
   ['weirdRange', 'weird', value => value, 'weirdValue'],
   ['chaosRange', 'chaos', value => value, 'chaosValue'],
   ['expRange', 'exp', value => value, 'expValue'],
-  ['seedRange', 'seedValue', value => value, 'seedValue'],
-  ['iwRange', 'iw', value => (value / 10).toFixed(1), 'iwValue'],
-  ['swRange', 'sw', value => value, 'swValue'],
-  ['owRange', 'ow', value => value, 'owValue']
+  ['seedRange', 'seedValue', value => value, 'seedValue']
 ].forEach(([id, key, formatter, labelId]) => {
   const input = document.getElementById(id);
   input.addEventListener('input', () => {
@@ -1675,8 +1272,6 @@ document.getElementById('profileInput').addEventListener('input', (e) => {
       document.getElementById(labelId).textContent = formatter(Number(input.value));
     }
     updateTrack(input);
-    renderStyle();
-    renderObject();
   });
   updateTrack(input);
 });
